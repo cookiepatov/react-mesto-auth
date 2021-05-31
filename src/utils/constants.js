@@ -5,6 +5,13 @@ const validationSettings = {
   errorClassVisible: 'popup__error_visible'
 };
 
+const authValidation = {
+  inputClass: 'auth-form__input',
+  inputErrorClass: 'auth-form__input_type_error',
+  errorClass: 'auth-form__error',
+  errorClassVisible: 'auth-form__error_visible'
+}
+
 const apiData = {
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-22',
   headers: {
@@ -13,7 +20,16 @@ const apiData = {
   }
 }
 
+const authData = {
+  baseUrl: 'https://auth.nomoreparties.co',
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}
+
 export {
   validationSettings,
-  apiData
+  authValidation,
+  apiData,
+  authData
 };

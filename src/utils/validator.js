@@ -1,7 +1,7 @@
 import {useState, useCallback} from 'react';
-import {validationSettings} from './constants';
+import {validationSettings, authValidation} from './constants';
 
-export function useFormAndValidation() {
+export function useFormAndValidation(authMode = false) {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(true);
@@ -9,7 +9,7 @@ export function useFormAndValidation() {
   const [errorsClasses, setErrorsClasses] = useState({});
 
   const handleChange = ({target}) => {
-    const {inputClass, inputErrorClass, errorClass, errorClassVisible} = validationSettings
+    const {inputClass, inputErrorClass, errorClass, errorClassVisible} = authMode ? authValidation :  validationSettings;
     const {name, value} = target;
     const newInputClass = target.validity.valid ? inputClass : `${inputClass} ${inputErrorClass}`;
     const newErrorClass = target.validity.valid ? errorClass: `${errorClass} ${errorClassVisible}`;

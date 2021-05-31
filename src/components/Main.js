@@ -13,8 +13,6 @@ function Main(props) {
     onCardLike,
     onCardDelete} = props;
   const {name, about, avatar} = useContext(CurrentUserContext)
-
-
   return (
     <main className="content">
       <section className="profile">

@@ -6,6 +6,16 @@
 @import url(./blocks/no-scroll/no-scroll.css);
 
 @import url(./blocks/header/header.css);
+@import url(./blocks/header/_lowered/header_lowered.css);
+@import url(./blocks/header/__content/header__content.css);
+@import url(./blocks/header/__content/_simple/header__content_simple.css);
+@import url(./blocks/header/__link/header__link.css);
+@import url(./blocks/header/__link/_faded/header__link_faded.css);
+@import url(./blocks/header/__right-block/header__right-block.css);
+@import url(./blocks/header/__email/header__email.css);
+@import url(./blocks/header/__humburger-button/header__humburger-button.css);
+@import url(./blocks/header/__humburger-button/_type/header__humburger-button_type_cross.css);
+@import url(./blocks/header/__right-block/_visible/header__right-block_visible.css);
 
 @import url(./blocks/logo/logo.css);
 
@@ -49,9 +59,23 @@
 @import url(./blocks/popup/__picture-container/popup__picture-container.css);
 @import url(./blocks/popup/__full-picture/popup__full-picture.css);
 @import url(./blocks/popup/__picture-elements/popup__picture-elements.css);
-@import url(./blocks/popup/__close-button/_position/popup__close-button_position_form.css);
-@import url(./blocks/popup/__close-button/_position/popup__close-button_position_picture.css);
+@import url(./blocks/popup/__close-button/_position/popup__close-button_position_tooltip.css);
 @import url(./blocks/popup/__picture-title/popup__picture-title.css);
 @import url(./blocks/popup/__error/popup__error.css);
 @import url(./blocks/popup/__error/_visible/popup__error_visible.css);
 @import url(./blocks/popup/__input/_type/popup__input_type_error.css);
+
+@import url(./blocks/popup/__info-img/popup__info-img.css);
+@import url(./blocks/popup/__info-text/popup__info-text.css);
+
+
+@import url(./blocks/auth-form/auth-form.css);
+@import url(./blocks/auth-form/__header/auth-form__header.css);
+@import url(./blocks/auth-form/__inputs/auth-form__inputs.css);
+@import url(./blocks/auth-form/__input/auth-form__input.css);
+@import url(./blocks/auth-form/__input/_type/auth-form__input_type_error.css);
+@import url(./blocks/auth-form/__error/auth-form__error.css);
+@import url(./blocks/auth-form/__error/_visible/auth-form__error_visible.css);
+@import url(./blocks/auth-form/__button/auth-form__button.css);
+@import url(./blocks/auth-form/__link/auth__link.css);
+@import url(./blocks/auth-form/__bottom-message/auth-form__bottom-message.css);
