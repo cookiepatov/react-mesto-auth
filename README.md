@@ -1,7 +1,7 @@
 
 # Проектная работа "Mesto ч.8"
 
-### [перейти](https://cookiepatov.github.io/mesto-react/
+### [перейти](http://cookiepatov.github.io/react-mesto-auth)
 
 ## Описание
 

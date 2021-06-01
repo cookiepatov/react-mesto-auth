@@ -23,7 +23,7 @@ function AddPlacePopup(props) {
       interval.current = setInterval(()=>{
         setButtonText(`Сохранение${dots[i]}`);
         i = (i === 2) ? 0 : i + 1;
-      },500)
+      },200)
     } else {
       clearInterval(interval.current)
       setButtonText(`Сохранить`);
@@ -62,7 +62,7 @@ function AddPlacePopup(props) {
         className={inputsClasses.name}
         placeholder="Название"
         onChange={handleChange}
-        value={values.name} />
+        value={values.name || ''} />
       <span className={errorsClasses.name}>{errors.name}</span>
       <input
         id="place-link-input"
@@ -72,7 +72,7 @@ function AddPlacePopup(props) {
         className={inputsClasses.data}
         placeholder="Ссылка на картинку"
         onChange={handleChange}
-        value={values.data}/>
+        value={values.data || ''}/>
       <span className={errorsClasses.data}>{errors.data}</span>
     </PopupWithForm>
   )

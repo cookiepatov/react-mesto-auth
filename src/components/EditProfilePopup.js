@@ -27,7 +27,7 @@ function EditProfilePopup(props) {
       interval.current = setInterval(()=>{
         setButtonText(`Сохранение${dots[i]}`);
         i = (i === 2) ? 0 : i + 1;
-      },500)
+      },200)
     } else {
       clearInterval(interval.current)
       setButtonText(`Сохранить`);
@@ -65,7 +65,7 @@ function EditProfilePopup(props) {
         required
         minLength="2"
         maxLength="40"
-        className={inputsClasses.name}
+        className={inputsClasses.name || ''}
         placeholder="Ваше имя"
         value={values.name}
         onChange={handleChange} />
@@ -77,7 +77,7 @@ function EditProfilePopup(props) {
         maxLength="200"
         className={inputsClasses.description}
         placeholder="Описание"
-        value={values.description}
+        value={values.description || ''}
         onChange={handleChange} />
       <span className={errorsClasses.description}>{errors.description}</span>
     </PopupWithForm>)

@@ -23,7 +23,7 @@ function EditAvatarPopup(props) {
       interval.current = setInterval(()=>{
         setButtonText(`Сохранение${dots[i]}`);
         i = (i === 2) ? 0 : i + 1;
-      },500)
+      },200)
     } else {
       clearInterval(interval.current)
       setButtonText(`Сохранить`);
@@ -60,7 +60,7 @@ function EditAvatarPopup(props) {
         type="url"
         className={inputsClasses.data}
         placeholder="Ссылка на аватар"
-        value={values.data}
+        value={values.data || ''}
         onChange={handleChange} />
       <span className={errorsClasses.data}>{errors.data}</span>
     </PopupWithForm>

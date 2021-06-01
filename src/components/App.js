@@ -7,14 +7,13 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import Header from './Header';
 import Main from './Main'
 import Footer from './Footer';
-import Login from './Login';
 import EditProfilePopup from './EditProfilePopup';
 import ImagePopup from './ImagePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
 import DeleteCardPopup from './DeleteCardPopup';
-import Register from './Register';
 import InfoTooltip from './InfoTooltip';
+import AuthForm from './AuthForm';
 import {Switch, useHistory, useLocation, Route, withRouter } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -41,7 +40,10 @@ function App() {
         checkToken();
         setCurrentUser(user);
         setCards(cards);
-      }).catch(console.log);
+      }).catch(err => {
+        openToolTip(false);
+        console.log(err);
+      });
   }, [])
 
 
@@ -99,7 +101,10 @@ function App() {
         setCurrentUser(user);
         closeAllPopups();
       })
-      .catch(console.log)
+      .catch(err => {
+        openToolTip(false);
+        console.log(err);
+      })
       .finally(() => {
         setPopupDataIsLoading(false)
       });
@@ -112,7 +117,10 @@ function App() {
         setCurrentUser(user);
         closeAllPopups();
       })
-      .catch(console.log)
+      .catch(err => {
+        openToolTip(false);
+        console.log(err);
+      })
       .finally(() => {
         setPopupDataIsLoading(false)
       });
@@ -126,7 +134,10 @@ function App() {
       setCards(cards => cards
         .map(currentCard => currentCard._id === card._id ? newCard : currentCard));
       closeAllPopups();
-    }).catch(console.log);
+    }).catch(err => {
+      openToolTip(false);
+      console.log(err);
+    });
   }
 
   function handleConfirmDelete(card) {
@@ -137,7 +148,10 @@ function App() {
           .filter(currentCard => currentCard._id !== card._id));
         closeAllPopups();
       })
-      .catch(console.log)
+      .catch(err => {
+        openToolTip(false);
+        console.log(err);
+      })
       .finally(() => {
         setPopupDataIsLoading(false)
       });
@@ -152,7 +166,10 @@ function App() {
         setCards(cards => [newCard, ...cards]);
         closeAllPopups();
       })
-      .catch(console.log)
+      .catch(err => {
+        openToolTip(false);
+        console.log(err);
+      })
       .finally(() => {
         setPopupDataIsLoading(false);
       });
@@ -162,11 +179,11 @@ function App() {
     auth.authorize({ email, password }).then(res => {
       setLoggedIn(true);
       setUserEmail(email);
-      console.log(res);
       saveToken(res.token);
       history.push('/');
-    }).catch(() => {
+    }).catch(err => {
       openToolTip(false);
+      console.log(err);
     })
   }
 
@@ -174,8 +191,9 @@ function App() {
     auth.register({ email, password }).then(res => {
       openToolTip(true);
       history.push('/sign-in');
-    }).catch(() => {
+    }).catch(err => {
       openToolTip(false);
+      console.log(err);
     })
   }
 
@@ -195,6 +213,9 @@ function App() {
         setUserEmail(res.data.email);
         setLoggedIn(true);
         history.push('/')
+      }).catch(err => {
+        openToolTip(false);
+        console.log(err);
       })
     }
   }
@@ -202,9 +223,6 @@ function App() {
   function removeToken() {
     localStorage.removeItem('jwt');
   }
-
-
-
 
   function setEventListeners() {
     document.addEventListener('keydown', closeOnEsc);
@@ -241,12 +259,18 @@ function App() {
             <Route
               exact
               path="/sign-in">
-              <Login loggedIn={loggedIn} onLogin={handleSignIn} />
+              <AuthForm
+                loggedIn={loggedIn}
+                onSubmit={handleSignIn}
+                isRegisterForm={false} />
             </Route>
             <Route
               exact
               path="/sign-up">
-              <Register loggedIn={loggedIn} onRegister={handleSignUp} />
+              <AuthForm
+                loggedIn={loggedIn}
+                onSubmit={handleSignUp}
+                isRegisterForm={true} />
             </Route>
           <ProtectedRoute
               exact
@@ -261,7 +285,7 @@ function App() {
               onCardLike={handleCardLike}
               onCardDelete={handleDeleteCardClick} />
           </Switch>
-          {loggedIn && <Footer />}
+          <Footer />
           <InfoTooltip
             onClose={closeAllPopups}
             isOpen={isTooltipOpen}

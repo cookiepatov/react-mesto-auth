@@ -13,7 +13,7 @@ function DeleteCardPopup(props) {
       interval.current = setInterval(()=>{
         setButtonText(`Удаление${dots[i]}`);
         i = (i === 2) ? 0 : i + 1;
-      },500)
+      },200)
     } else {
       clearInterval(interval.current)
       setButtonText(`Да`);
