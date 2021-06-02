@@ -1,4 +1,4 @@
-.auth-form {
+.auth-form__cotainer {
   display: flex;
   max-width: 358px;
   flex-direction: column;
