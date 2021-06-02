@@ -1,10 +1,9 @@
 import {React, useEffect} from 'react';
 import {useFormAndValidation} from '../utils/validator';
 import {authValidation} from '../utils/constants';
-import {Link, withRouter} from 'react-router-dom';
 
 function AuthForm(props) {
-  const { loggedIn, onSubmit, isRegisterForm} = props;
+  const { loggedIn, onSubmit, buttonText} = props;
   const { inputClass, errorClass } = authValidation;
   const { values,
     handleChange,
@@ -22,9 +21,6 @@ function AuthForm(props) {
       { email: errorClass, password: errorClass });
   }, [loggedIn]);
 
-  const buttonText = isRegisterForm ? 'Зарегистрироваться' : 'Войти';
-  const title = isRegisterForm ? 'Регистрация' : 'Вход';
-
   function handleSubmit(e) {
     e.preventDefault();
     onSubmit(values);
@@ -32,10 +28,7 @@ function AuthForm(props) {
   }
 
   return (
-    <form className="auth-form" onSubmit={handleSubmit}>
-      <h2 className="auth-form__header">
-        {title}
-        </h2>
+    <form className="auth-form__container" onSubmit={handleSubmit}>
       <fieldset className="auth-form__inputs">
         <input
           className={inputsClasses.email}
@@ -65,9 +58,8 @@ function AuthForm(props) {
         <span className={errorsClasses.password}>{errors.password}</span>
       </fieldset>
       <button className="auth-form__button" type="submit" disabled={!isValid}>{buttonText}</button>
-      {isRegisterForm && <p className="auth-form__bottom-message">Уже зарегистрированы? <Link className="auth__link" to="/sign-in"> Войти </Link></p>}
     </form>
   );
 }
 
-export default withRouter(AuthForm);
+export default AuthForm;

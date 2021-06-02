@@ -70,6 +70,7 @@
 
 
 @import url(./blocks/auth-form/auth-form.css);
+@import url(./blocks/auth-form/__container/auth-form__container.css);
 @import url(./blocks/auth-form/__header/auth-form__header.css);
 @import url(./blocks/auth-form/__inputs/auth-form__inputs.css);
 @import url(./blocks/auth-form/__input/auth-form__input.css);

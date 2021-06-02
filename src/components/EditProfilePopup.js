@@ -65,9 +65,9 @@ function EditProfilePopup(props) {
         required
         minLength="2"
         maxLength="40"
-        className={inputsClasses.name || ''}
+        className={inputsClasses.name}
         placeholder="Ваше имя"
-        value={values.name}
+        value={values.name || ''}
         onChange={handleChange} />
       <span className={errorsClasses.name}>{errors.name}</span>
       <input

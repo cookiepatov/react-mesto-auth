@@ -13,7 +13,8 @@ import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
 import DeleteCardPopup from './DeleteCardPopup';
 import InfoTooltip from './InfoTooltip';
-import AuthForm from './AuthForm';
+import Login from './Login';
+import Register from './Register';
 import {Switch, useHistory, useLocation, Route, withRouter } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
 
@@ -259,18 +260,16 @@ function App() {
             <Route
               exact
               path="/sign-in">
-              <AuthForm
+              <Login
                 loggedIn={loggedIn}
-                onSubmit={handleSignIn}
-                isRegisterForm={false} />
+                onLogin={handleSignIn} />
             </Route>
             <Route
               exact
               path="/sign-up">
-              <AuthForm
+              <Register
                 loggedIn={loggedIn}
-                onSubmit={handleSignUp}
-                isRegisterForm={true} />
+                onRegister={handleSignUp} />
             </Route>
           <ProtectedRoute
               exact
